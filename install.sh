@@ -344,6 +344,7 @@ function vless_xtls-utls-reality_information() {
     DEST=$(cat ${xray_conf_dir}/config.json | jq .inbounds[0].streamSettings.realitySettings.dest | tr -d '"')
     SERVERNAMES=$(cat ${xray_conf_dir}/config.json | jq .inbounds[0].streamSettings.realitySettings.serverNames[0] | tr -d '"')
     PRIVATEKEY=$(cat ${xray_conf_dir}/config.json | jq .inbounds[0].streamSettings.realitySettings.privateKey | tr -d '"')
+    PUBLICKEY=$(echo "$PRIVATEKEY" | xargs xray x25519 -d)
 
     echo -e "${Red} Xray Configuration Info ${Font}"
     # echo -e "${Red} 地址（address）:${Font}  $DOMAIN"
@@ -356,6 +357,7 @@ function vless_xtls-utls-reality_information() {
     echo -e "${Red} Dest:${Font} $DEST"
     echo -e "${Red} ServerNames:${Font} $SERVERNAMES"
     echo -e "${Red} PrivateKey:${Font} $PRIVATEKEY"
+    echo -e "${Red} PublicKey:${Font} $PUBLICKEY"
     print_ok "Xray vless+xtls+utls+reality configuration info print completed."
 }
 
