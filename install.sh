@@ -423,7 +423,7 @@ function xray_uninstall() {
 menu() {
     update_sh
 
-    echo -e "Current installed mode: ${shell_mode}"
+    # echo -e "Current installed mode: ${shell_mode}"
     if [[ ${shell_mode} == "ws" ]]; then
         echo -e "Looks like you have installed Xray (TLS + Nginx + WebSocket), please uninstall it first."
         print_ok "Uninstall Xray (TLS + Nginx + WebSocket)? [Y/N]"
