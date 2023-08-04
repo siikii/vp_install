@@ -353,9 +353,9 @@ function vless_xtls-utls-reality_information() {
     echo -e "${Red} ServerNames: {Font} $SERVERNAMES"
 }
 
-function vless_xtls-utls-reality_link() {
+# function vless_xtls-utls-reality_link() {
 
-}
+# }
 
 function basic_information() {
     print_ok "VLESS+uTLS+Reality install succeded."
