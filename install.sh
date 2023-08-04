@@ -207,7 +207,7 @@ function domain_check() {
             sleep 2
         else
             print_error "Please insure that correct A / AAAA record has beeb added, or you will not be able to use Xray normally."
-            print_error "Doamin IP from DNS not match local IP, continue to install anyway?（y/n）" && read -r install
+            print_error "Doamin IP from DNS not match local IP, continue to install anyway? (y/n)" && read -r install
             case $install in
             [yY][eE][sS] | [yY])
                 print_ok "continue to install"
@@ -274,7 +274,6 @@ function modify_privateKey() {
         PRIVATEKEY=$(head -c 32 /dev/random | base64 -w 0 | tr '+/' '-_' | tr -d '=' | xargs xray x25519 -i)
         echo "private key and public key pair can only be generated after installing xray."
         echo -e "$yellow private key (PrivateKey) = ${cyan}${private_key}${none}"
-        echo -e "$yellow public key (PublicKey) = ${cyan}${public_key}${none}"
     fi
     cat ${xray_conf_dir}/config.json | jq 'setpath(["inbounds",0,"streamSettings","realitySettings","privateKey"];"'${PRIVATEKEY}'")' >${xray_conf_dir}/config_tmp.json
     xray_tmp_config_file_check_and_use
@@ -344,7 +343,7 @@ function vless_xtls-utls-reality_information() {
     DEST=$(cat ${xray_conf_dir}/config.json | jq .inbounds[0].streamSettings.realitySettings.dest | tr -d '"')
     SERVERNAMES=$(cat ${xray_conf_dir}/config.json | jq .inbounds[0].streamSettings.realitySettings.serverNames[0] | tr -d '"')
     PRIVATEKEY=$(cat ${xray_conf_dir}/config.json | jq .inbounds[0].streamSettings.realitySettings.privateKey | tr -d '"')
-    PUBLICKEY=$(echo "$PRIVATEKEY" | xargs xray x25519 -i)
+    PUBLICKEY=$(echo -n "$PRIVATEKEY" | xargs xray x25519 -i | awk '{print $6}')
 
     echo -e "${Red} Xray Configuration Info ${Font}"
     # echo -e "${Red} 地址（address）:${Font}  $DOMAIN"
