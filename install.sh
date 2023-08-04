@@ -35,6 +35,15 @@ random_num=$((RANDOM % 12 + 4))
 default_UUID="9413922d-5e4e-44a6-9d0a-43eb2f7eab8c"
 default_PRIVATEKEY="KG51ri3PjT00wO3UsSirbnArZ4O3kQ7TF-JoJ6uoZ2A"
 
+# print ok/error message
+function print_ok() {
+    echo -e "${OK} ${Blue} $1 ${Font}"
+}
+
+function print_error() {
+    echo -e "${ERROR} ${RedBG} $1 ${Font}"
+}
+
 # check root
 function is_root() {
     if [[ 0 -ne $EUID ]]; then
@@ -45,15 +54,6 @@ function is_root() {
     fi
 }
 # [[ 0 -ne $EUID ]] && echo -e "${ERROR} This script must be run as root!" && exit 1
-
-# print ok/error message
-function print_ok() {
-    echo -e "${OK} ${Blue} $1 ${Font}"
-}
-
-function print_error() {
-    echo -e "${ERROR} ${RedBG} $1 ${Font}"
-}
 
 # check system
 function system_check() {
@@ -317,7 +317,7 @@ function xray_install() {
 }
 
 function configure_xray() {
-    cd /usr/local/etc/xray && rm -f config.json && wget -O config.json https://raw.githubusercontent.com/siikii/xray_install/${github_branch}/config/xray_utls_reality.json
+    cd /usr/local/etc/xray && rm -f config.json && wget -O config.json https://raw.githubusercontent.com/siikii/xray_install/${github_branch}/config/vless_xtls-utls-reality.json
     modify_UUID
     modify_port
     modify_dest
@@ -416,7 +416,7 @@ function xray_uninstall() {
 menu() {
     update_sh
 
-    echo -e "Current installed mode：${shell_mode}"
+    echo -e "Current installed mode: ${shell_mode}"
     if [[ ${shell_mode} == "ws" ]]; then
         echo -e "Looks like you have installed Xray (TLS + Nginx + WebSocket), please uninstall it first."
         print_ok "Uninstall Xray (TLS + Nginx + WebSocket)? [Y/N]"
