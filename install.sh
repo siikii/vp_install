@@ -350,7 +350,8 @@ function vless_xtls-utls-reality_information() {
     echo -e "${Red} Security:${Font} none"
     echo -e "${Red} Network:${Font} tcp"
     echo -e "${Red} Dest:${Font} $DEST"
-    echo -e "${Red} ServerNames:{Font} $SERVERNAMES"
+    echo -e "${Red} ServerNames:${Font} $SERVERNAMES"
+    print_ok "Xray vless+xtls+utls+reality configuration info print completed."
 }
 
 # function vless_xtls-utls-reality_link() {
