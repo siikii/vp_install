@@ -339,6 +339,8 @@ function vless_xtls-utls-reality_information() {
     UUID=$(cat ${xray_conf_dir}/config.json | jq .inbounds[0].settings.clients[0].id | tr -d '"')
     PORT=$(cat ${xray_conf_dir}/config.json | jq .inbounds[0].port)
     FLOW=$(cat ${xray_conf_dir}/config.json | jq .inbounds[0].settings.clients[0].flow | tr -d '"')
+    DECRYPTION=$(cat ${xray_conf_dir}/config.json | jq .inbounds[0].settings.decryption | tr -d '"')
+    SECURITY=$(cat ${xray_conf_dir}/config.json | jq .inbounds[0].streamSettings.security | tr -d '"')
     DEST=$(cat ${xray_conf_dir}/config.json | jq .inbounds[0].streamSettings.realitySettings.dest | tr -d '"')
     SERVERNAMES=$(cat ${xray_conf_dir}/config.json | jq .inbounds[0].streamSettings.realitySettings.serverNames[0] | tr -d '"')
 
@@ -347,8 +349,9 @@ function vless_xtls-utls-reality_information() {
     echo -e "${Red} Port:${Font} $PORT"
     echo -e "${Red} UUID:${Font} $UUID"
     echo -e "${Red} Flow:${Font} $FLOW"
-    echo -e "${Red} Security:${Font} none"
+    echo -e "${Red} Decyption:${Font} $DECRYPTION"
     echo -e "${Red} Network:${Font} tcp"
+    echo -e "${Red} Security:${Font} $SECURITY"
     echo -e "${Red} Dest:${Font} $DEST"
     echo -e "${Red} ServerNames:${Font} $SERVERNAMES"
     print_ok "Xray vless+xtls+utls+reality configuration info print completed."
