@@ -56,7 +56,7 @@ function print_error() {
 }
 
 # check system
-function check_system() {
+function system_check() {
     source '/etc/os-release'
     if [[ "${ID}" == "centos" && ${VERSION_ID} -ge 7 ]]; then
         print_ok "Current OS: CentOS ${VERSION_ID} ${VERSION}"
