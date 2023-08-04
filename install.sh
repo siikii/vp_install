@@ -344,13 +344,13 @@ function vless_xtls-utls-reality_information() {
 
     echo -e "${Red} Xray Configuration Info ${Font}"
     # echo -e "${Red} 地址（address）:${Font}  $DOMAIN"
-    echo -e "${Red} Port: ${Font}  $PORT"
-    echo -e "${Red} UUID: ${Font} $UUID"
-    echo -e "${Red} Flow: ${Font} $FLOW"
-    echo -e "${Red} Security: ${Font} none"
-    echo -e "${Red} Network: ${Font} tcp"
-    echo -e "${Red} Dest: ${Font} $DEST"
-    echo -e "${Red} ServerNames: {Font} $SERVERNAMES"
+    echo -e "${Red} Port:${Font} $PORT"
+    echo -e "${Red} UUID:${Font} $UUID"
+    echo -e "${Red} Flow:${Font} $FLOW"
+    echo -e "${Red} Security:${Font} none"
+    echo -e "${Red} Network:${Font} tcp"
+    echo -e "${Red} Dest:${Font} $DEST"
+    echo -e "${Red} ServerNames:{Font} $SERVERNAMES"
 }
 
 # function vless_xtls-utls-reality_link() {

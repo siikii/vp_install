@@ -1,7 +1,5 @@
 {
     "log": {
-        "access": "/var/log/xray_access.log",
-        "error": "/var/log/xray_error.log",
         "loglevel": "warning"
     },
     "routing": {
